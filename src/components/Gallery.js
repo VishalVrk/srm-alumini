@@ -2,7 +2,7 @@ import React from 'react';
 
 const Gallery = () => {
   const images = [
-    '![WhatsApp Image 2024-10-21 at 8 01 31 AM](https://github.com/user-attachments/assets/5decdb41-ff1e-4dee-8ab5-b1e9e8b40e3f)',  // Placeholder images; replace with actual URLs
+    'https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2022/03/Economic-Scholarships-for-International-Students-at-SRM-Institute-of-Science-and-Technology-India-e1646799112358.jpg',  // Placeholder images; replace with actual URLs
     'https://media.istockphoto.com/id/916430298/photo/multi-ethnic-college-students-discussing-project-together.jpg?s=1024x1024&w=is&k=20&c=0It4wrNwIcy_HmwAX63X_ncYDB9xfJsfCuqsyifGHfg=',
     'https://images.unsplash.com/photo-1620989983305-be972a0e290e?q=80&w=2453&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'https://images.unsplash.com/photo-1648183185045-7a5592e66e9c?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',

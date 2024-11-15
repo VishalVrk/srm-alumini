@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           <Link to="/">
           <img 
-            src="https://srmeaswari.ac.in/wp-content/uploads/2022/06/eec-logo-finalized-300x101.png" 
+            src={logo} 
             alt="Easwari Engineering College Logo" 
             className="w-12 h-12"
           />

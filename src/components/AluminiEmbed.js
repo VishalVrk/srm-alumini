@@ -52,8 +52,8 @@ const AlumniEmbed = () => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill="#EAEAEC"
-                  stroke="#D6D6DA"
+                  fill="#A2D2FF" // Light blue fill for a colorful effect
+                  stroke="#00509E" // Darker blue stroke for contrast
                   className="outline-none"
                 />
               ))
