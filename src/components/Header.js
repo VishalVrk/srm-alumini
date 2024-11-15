@@ -11,7 +11,7 @@ const Header = () => {
           <img 
             src={logo} 
             alt="Easwari Engineering College Logo" 
-            className="w-12 h-12"
+            className="w-20 h-12"
           />
           </Link>
         </div>
