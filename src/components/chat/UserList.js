@@ -6,7 +6,7 @@ function UserList({ setReceiverId, currentUser }) {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data, error } = await supabase.from('profiles').select('id, email');
+      const { data, error } = await supabase.from('profiles').select('id, email, name');
       if (error) {
         console.error('Error fetching users:', error);
       } else {
@@ -29,7 +29,7 @@ function UserList({ setReceiverId, currentUser }) {
             onClick={() => setReceiverId(user.id)}
             className="w-full text-left p-2 rounded-lg bg-gray-700 hover:bg-gray-600"
           >
-            {user.email}
+            {user.name}
           </button>
         ))}
       </div>
