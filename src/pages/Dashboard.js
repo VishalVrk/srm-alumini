@@ -8,12 +8,11 @@ import Notifications from '../components/dashboard/notifications';
 import Chat from '../components/chat/Chat';
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null); // Store the authenticated user
-  const [tables, setTables] = useState([]); // To fetch and display any relevant data
-  const [selectedComponent, setSelectedComponent] = useState('notifications'); // Set Notifications as default
+  const [user, setUser] = useState(null);
+  const [tables, setTables] = useState([]);
+  const [selectedComponent, setSelectedComponent] = useState('notifications');
   const navigate = useNavigate();
 
-  // Check if user is logged in
   useEffect(() => {
     const checkUser = async () => {
       const { data: { session }, error } = await supabase.auth.getSession();
@@ -33,7 +32,6 @@ const Dashboard = () => {
     checkUser();
   }, [navigate]);
 
-  // Fetch data from a table (example: fetching profile details)
   useEffect(() => {
     const fetchTables = async () => {
       if (user) {
@@ -53,7 +51,6 @@ const Dashboard = () => {
     fetchTables();
   }, [user]);
 
-  // Handle user logout
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
@@ -62,58 +59,56 @@ const Dashboard = () => {
       navigate('/');
     }
   };
+
   return (
-    <div className="flex min-h-screen bg-gradient-to-r from-gray-100 to-gray-200">
+    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f4f6f8' }}>
       {/* Sidebar */}
-      <aside className="w-64 bg-teal-600 text-white flex flex-col shadow-lg">
-        <h1 className="text-3xl font-bold p-6">Dashboard</h1>
-  
-        <nav className="flex-1 p-6">
-          <ul>
-            <li className="mb-6">
-              <button
-                onClick={() => setSelectedComponent('blogs')}
-                className="hover:underline hover:text-teal-200"
-              >
-                Blogs
-              </button>
-            </li>
-            <li className="mb-6">
-              <button
-                onClick={() => setSelectedComponent('events')}
-                className="hover:underline hover:text-teal-200"
-              >
-                Events
-              </button>
-            </li>
-            <li className="mb-6">
-              <button
-                onClick={() => setSelectedComponent('jobOpenings')}
-                className="hover:underline hover:text-teal-200"
-              >
-                Job Openings
-              </button>
-            </li>
-            <li className="mb-6">
-              <button
-                onClick={() => setSelectedComponent('notifications')}
-                className="hover:underline hover:text-teal-200"
-              >
-                Notifications
-              </button>
-            </li>
-            <li className="mb-6">
-              <button
-                onClick={() => setSelectedComponent('messaging')}
-                className="hover:underline hover:text-teal-200"
-              >
-                Chat Now
-              </button>
-            </li>
-            <li className="mt-auto mb-4">
+      <aside style={{
+        width: '20%',
+        backgroundColor: '#00695c',
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)'
+      }}>
+        <h1 style={{ fontSize: '2rem', padding: '24px', fontWeight: 'bold' }}>Dashboard</h1>
+
+        <nav style={{ flex: 1, padding: '24px' }}>
+          <ul style={{ padding: 0, listStyleType: 'none' }}>
+            {['blogs', 'events', 'jobOpenings', 'notifications', 'messaging'].map((item) => (
+              <li key={item} style={{ marginBottom: '24px' }}>
+                <button
+                  onClick={() => setSelectedComponent(item)}
+                  style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    padding: '12px',
+                    fontSize: '1.1rem',
+                    color: selectedComponent === item ? '#80cbc4' : '#cfd8dc',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s ease',
+                    borderRadius: '5px',
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#004d40'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1).replace('jobOpenings', 'Job Openings').replace('messaging', 'Chat Now')}
+                </button>
+              </li>
+            ))}
+            <li style={{ marginTop: 'auto', marginBottom: '16px' }}>
               <button
                 onClick={handleLogout}
-                className="text-sm font-semibold hover:text-teal-200"
+                style={{
+                  color: '#cfd8dc',
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
               >
                 Log Out
               </button>
@@ -121,10 +116,25 @@ const Dashboard = () => {
           </ul>
         </nav>
       </aside>
-  
+
       {/* Main Content */}
-      <main className="flex-1 p-10 bg-white rounded-tl-3xl shadow-lg">
-        <h2 className="text-2xl font-extrabold mb-8 text-gray-800">Welcome, {tables[0]?.name}</h2>
+      <main style={{
+        width: '80%',
+        padding: '40px',
+        backgroundColor: '#ffffff',
+        borderRadius: '12px 0 0 12px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+      }}>
+        <h2 style={{
+          fontSize: '2rem',
+          fontWeight: '800',
+          marginBottom: '32px',
+          color: '#333',
+          fontFamily: 'Roboto, sans-serif'
+        }}>
+          Welcome, {tables[0]?.name}
+        </h2>
+        
         {/* Render selected component based on the selected option */}
         {selectedComponent === 'blogs' && <Blogs />}
         {selectedComponent === 'events' && <Events />}
@@ -134,7 +144,6 @@ const Dashboard = () => {
       </main>
     </div>
   );
-  
 };
 
 export default Dashboard;
