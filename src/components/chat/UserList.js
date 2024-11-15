@@ -5,18 +5,44 @@ function UserList({ setReceiverId, currentUser }) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      const { data, error } = await supabase.from('profiles').select('id, email, name');
+    const fetchUsersWithUnreadCount = async () => {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('id, email, name');
+
       if (error) {
         console.error('Error fetching users:', error);
-      } else {
-        // Filter out the current user
-        const filteredUsers = data.filter((user) => user.id !== currentUser?.id);
-        setUsers(filteredUsers);
+        return;
       }
+
+      // Filter out the current user
+      const filteredUsers = data.filter((user) => user.id !== currentUser?.id);
+
+      // Fetch unread message count for each user
+      const usersWithUnreadCount = await Promise.all(
+        filteredUsers.map(async (user) => {
+          const { count, error: unreadError } = await supabase
+            .from('messages')
+            .select('id', { count: 'exact' })
+            .eq('sender_id', user.id)
+            .eq('receiver_id', currentUser.id)
+            .eq('is_read', false);
+
+          if (unreadError) {
+            console.error(`Error fetching unread count for user ${user.id}:`, unreadError);
+          }
+
+          return {
+            ...user,
+            unread_count: count || 0, // Default to 0 if there's an error or no unread messages
+          };
+        })
+      );
+
+      setUsers(usersWithUnreadCount);
     };
 
-    fetchUsers();
+    fetchUsersWithUnreadCount();
   }, [currentUser]);
 
   return (
@@ -27,9 +53,23 @@ function UserList({ setReceiverId, currentUser }) {
           <button
             key={user.id}
             onClick={() => setReceiverId(user.id)}
-            className="w-full text-left p-2 rounded-lg bg-gray-700 hover:bg-gray-600"
+            className="w-full text-left p-2 rounded-lg bg-gray-700 hover:bg-gray-600 relative"
           >
             {user.name}
+            {user.unread_count > 0 && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  right: '12px',
+                  transform: 'translateY(-50%)',
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: 'red',
+                  borderRadius: '50%',
+                }}
+              ></span>
+            )}
           </button>
         ))}
       </div>
