@@ -48,14 +48,6 @@ function Chat() {
 
       setMessages(allMessages);
       setIsChatEmpty(allMessages.length === 0);
-
-      // Mark received messages as read
-      await supabase
-        .from('messages')
-        .update({ is_read: true })
-        .eq('receiver_id', user.id)
-        .eq('sender_id', receiverId)
-        .eq('is_read', false);
     } catch (err) {
       console.error("Error fetching messages:", err);
     }
@@ -75,7 +67,6 @@ function Chat() {
           sender_id: user.id,
           receiver_id: receiverId,
           content: newMessage,
-          is_read: false, // New message is initially unread for the receiver
         },
       ]);
 
