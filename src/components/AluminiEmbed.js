@@ -42,18 +42,18 @@ const AlumniEmbed = () => {
   return (
     <div className="relative w-full h-[60vh] bg-gray-100">
       <ComposableMap
-        projection="geoNaturalEarth1" // Changed projection for a more rounded look
+        projection="geoMercator"
         className="w-full h-full"
       >
-        <ZoomableGroup center={[0, 20]} zoom={1.2}>
+        <ZoomableGroup center={[0, 20]} zoom={1.5}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill="#D0E6F7" // Softer color for land
-                  stroke="#6C757D" // Light gray stroke
+                  fill="#A2D2FF" // Light blue fill for a colorful effect
+                  stroke="#00509E" // Darker blue stroke for contrast
                   className="outline-none"
                 />
               ))
@@ -63,7 +63,7 @@ const AlumniEmbed = () => {
             <Marker key={index} coordinates={marker.coordinates}>
               <circle 
                 r={Math.sqrt(marker.value) * 4} // Adjust circle size based on alumni count
-                fill="url(#grad1)" // Use gradient for a realistic marker effect
+                fill="#FF5733" // Use a distinct color for visibility
                 stroke="#333"
                 strokeWidth={1}
                 className="cursor-pointer transition-all duration-300 hover:opacity-80"
@@ -75,14 +75,6 @@ const AlumniEmbed = () => {
         </ZoomableGroup>
       </ComposableMap>
       <Tooltip id="marker-tooltip" />
-      <svg width="0" height="0">
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: '#FF6F61', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#D84315', stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-      </svg>
     </div>
   );
 };
