@@ -57,7 +57,7 @@ function Chat() {
         .eq('receiver_id', user.id)
         .eq('is_read', false); // Only update unread messages
     } catch (err) {
-      console.error("Error fetching messages:", err);
+      console.error('Error fetching messages:', err);
     }
   };
 
@@ -75,7 +75,7 @@ function Chat() {
           sender_id: user.id,
           receiver_id: receiverId,
           content: newMessage,
-          is_read: false // Ensure new messages are unread by default
+          is_read: false, // Ensure new messages are unread by default
         },
       ]);
 
@@ -93,22 +93,26 @@ function Chat() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-800 text-white  max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
-      <div className="flex-grow flex  max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
-        <UserList setReceiverId={setReceiverId} currentUser={user} />
+    <div className="flex h-screen bg-gray-800 text-white">
+      <UserList setReceiverId={setReceiverId} currentUser={user} />
+      <div className="flex flex-col flex-grow">
         {receiverId ? (
-          <div className="flex flex-col flex-grow h-96 overflow-y-auto max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
-            <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg chat-messages">
+          <>
+            <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg">
               <h3 className="text-lg font-semibold mb-4">Chat</h3>
               <div className="space-y-2">
                 {isChatEmpty ? (
-                  <p className="text-gray-500 text-center">No messages yet. Start the conversation!</p>
+                  <p className="text-gray-500 text-center">
+                    No messages yet. Start the conversation!
+                  </p>
                 ) : (
                   messages.map((msg) => (
                     <div
                       key={msg.id}
                       className={`flex ${
-                        msg.sender_id === user.id ? 'justify-end' : 'justify-start'
+                        msg.sender_id === user.id
+                          ? 'justify-end'
+                          : 'justify-start'
                       }`}
                     >
                       <div
@@ -125,7 +129,7 @@ function Chat() {
                 )}
               </div>
             </div>
-            <div className="mt-4 p-4 bg-gray-800 border-t border-gray-700 flex items-center">
+            <div className="p-4 bg-gray-800 border-t border-gray-700 flex items-center">
               <input
                 type="text"
                 value={newMessage}
@@ -140,7 +144,7 @@ function Chat() {
                 Send
               </button>
             </div>
-          </div>
+          </>
         ) : (
           <div className="flex items-center justify-center flex-grow text-gray-400">
             <p>Select a user to start chatting</p>
