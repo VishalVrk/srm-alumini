@@ -36,8 +36,8 @@ function App() {
             <Route path="/event/:id" element={<SingleEventPage />} />
             <Route path="/openings/:id" element={<SingleOpeningsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route path="/update-password" component={UpdatePassword} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/update-password" element={UpdatePassword} />
           </Routes>
         </div>
         <Footer />
