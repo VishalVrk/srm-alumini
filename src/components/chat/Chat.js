@@ -93,30 +93,43 @@ function Chat() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-800 text-white">
-      <div className="flex-grow flex">
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: '#1a202c', color: 'white' }}>
+      <div style={{ display: 'flex', flexGrow: 1 }}>
         <UserList setReceiverId={setReceiverId} currentUser={user} />
         {receiverId ? (
-          <div className="flex flex-col flex-grow">
-            <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4">Chat</h3>
-              <div className="space-y-2">
+          <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+            <div
+              style={{
+                flexGrow: 1,
+                padding: '16px',
+                overflowY: 'auto',
+                backgroundColor: '#2d3748',
+                borderRadius: '8px',
+                maxHeight: 'calc(100vh - 150px)', // Adjust based on your layout
+              }}
+            >
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '16px' }}>Chat</h3>
+              <div style={{ gap: '8px' }}>
                 {isChatEmpty ? (
-                  <p className="text-gray-500 text-center">No messages yet. Start the conversation!</p>
+                  <p style={{ color: '#718096', textAlign: 'center' }}>No messages yet. Start the conversation!</p>
                 ) : (
                   messages.map((msg) => (
                     <div
                       key={msg.id}
-                      className={`flex ${
-                        msg.sender_id === user.id ? 'justify-end' : 'justify-start'
-                      }`}
+                      style={{
+                        display: 'flex',
+                        justifyContent: msg.sender_id === user.id ? 'flex-end' : 'flex-start',
+                        marginBottom: '8px',
+                      }}
                     >
                       <div
-                        className={`${
-                          msg.sender_id === user.id
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-700 text-white'
-                        } p-2 rounded-lg max-w-xs`}
+                        style={{
+                          backgroundColor: msg.sender_id === user.id ? '#3182ce' : '#4a5568',
+                          color: 'white',
+                          padding: '8px',
+                          borderRadius: '8px',
+                          maxWidth: '60%',
+                        }}
                       >
                         {msg.content}
                       </div>
@@ -125,30 +138,56 @@ function Chat() {
                 )}
               </div>
             </div>
-            <div className="mt-4 p-4 bg-gray-800 border-t border-gray-700 flex items-center">
+            <div
+              style={{
+                marginTop: '4px',
+                padding: '16px',
+                backgroundColor: '#1a202c',
+                borderTop: '1px solid #4a5568',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <input
                 type="text"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Type a message"
-                className="flex-grow p-2 rounded-lg bg-gray-700 text-white mr-4 focus:outline-none"
+                style={{
+                  flexGrow: 1,
+                  padding: '8px',
+                  borderRadius: '8px',
+                  backgroundColor: '#4a5568',
+                  color: 'white',
+                  marginRight: '16px',
+                  border: 'none',
+                  outline: 'none',
+                }}
               />
               <button
                 onClick={handleSendMessage}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg"
+                style={{
+                  backgroundColor: '#3182ce',
+                  color: 'white',
+                  fontWeight: '600',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
               >
                 Send
               </button>
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center flex-grow text-gray-400">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexGrow: 1, color: '#718096' }}>
             <p>Select a user to start chatting</p>
           </div>
         )}
       </div>
     </div>
   );
-}
+  
 
 export default Chat;
