@@ -1,4 +1,3 @@
-// ForgotPassword.js
 import React, { useState } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +15,7 @@ const ForgotPassword = () => {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: 'https://yourapp.com/update-password',
+        redirectTo: 'https://srm-alumini.vercel.app/forgot-password',
       });
       if (error) throw error;
       setMessage('Password reset email sent successfully.');

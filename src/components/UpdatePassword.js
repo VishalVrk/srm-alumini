@@ -1,14 +1,34 @@
-// UpdatePassword.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const UpdatePassword = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true); // To handle token validation
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    // Extract the access_token from the URL query parameters
+    const token = searchParams.get('access_token');
+    if (!token) {
+      setError('Invalid or missing token.');
+      setLoading(false);
+      return;
+    }
+
+    // Set the session using the token
+    supabase.auth.setSession(token)
+      .then(({ error }) => {
+        if (error) {
+          setError('Session error: ' + error.message);
+        }
+        setLoading(false);
+      });
+  }, [searchParams]);
 
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
@@ -29,6 +49,8 @@ const UpdatePassword = () => {
       setError(err.message);
     }
   };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
