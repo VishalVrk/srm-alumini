@@ -1,7 +1,6 @@
-// UpdatePassword.js
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import supabase from '../supabaseClient';
-import { useNavigate, useLocation } from 'react-router-dom';
 
 const UpdatePassword = () => {
   const [password, setPassword] = useState('');
@@ -10,25 +9,20 @@ const UpdatePassword = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const accessToken = params.get('access_token');
-
-    if (accessToken) {
-      supabase.auth.setSession({ access_token: accessToken })
-        .then(({ error }) => {
-          if (error) {
-            setError('Invalid or expired token.');
-          }
-          setLoading(false);
-        });
-    } else {
-      setError('No access token provided.');
+    const handlePasswordRecovery = async () => {
+      const { data: { session }, error } = await supabase.auth.getSessionFromUrl({ storeSession: true });
+      if (error) {
+        setError('Invalid or expired token.');
+      } else if (session) {
+        setMessage('Session retrieved successfully. You can now update your password.');
+      }
       setLoading(false);
-    }
-  }, [location.search]);
+    };
+
+    handlePasswordRecovery();
+  }, []);
 
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
