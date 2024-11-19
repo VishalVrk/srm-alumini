@@ -1,34 +1,34 @@
+// UpdatePassword.js
 import React, { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const UpdatePassword = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true); // To handle token validation
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
 
   useEffect(() => {
-    // Extract the access_token from the URL query parameters
-    const token = searchParams.get('access_token');
-    if (!token) {
-      setError('Invalid or missing token.');
-      setLoading(false);
-      return;
-    }
+    const params = new URLSearchParams(location.search);
+    const accessToken = params.get('access_token');
 
-    // Set the session using the token
-    supabase.auth.setSession(token)
-      .then(({ error }) => {
-        if (error) {
-          setError('Session error: ' + error.message);
-        }
-        setLoading(false);
-      });
-  }, [searchParams]);
+    if (accessToken) {
+      supabase.auth.setSession({ access_token: accessToken })
+        .then(({ error }) => {
+          if (error) {
+            setError('Invalid or expired token.');
+          }
+          setLoading(false);
+        });
+    } else {
+      setError('No access token provided.');
+      setLoading(false);
+    }
+  }, [location.search]);
 
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
