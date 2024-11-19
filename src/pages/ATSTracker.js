@@ -14,12 +14,12 @@ function ATSTracker() {
         </p>
         {/* Embedding the Hugging Face Space */}
         <div className="flex justify-center">
-        <iframe
-          src="https://vaishvik1618-atsmatch.hf.space"
-          frameborder="0"
-          width="850"
-          height="450"
-        ></iframe>
+          <iframe
+            src="https://vaishvik1618-atsmatch.hf.space?embed=true&embed_options=hide_header,hide_title"
+            frameBorder="0"
+            width="850"
+            height="850"
+          ></iframe>
         </div>
       </div>
     </div>
