@@ -8,3 +8,13 @@ module.exports = {
   },
   plugins: [],
 };
+module.exports = {
+  theme: {
+    extend: {
+      maxHeight: {
+        'chat': 'calc(100vh - 150px)',
+      },
+    },
+  },
+  plugins: [],
+};
