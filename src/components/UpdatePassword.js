@@ -1,6 +1,11 @@
+// UpdatePassword.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import supabase from '../supabaseClient';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://poaxhsurnoaohtmzdwon.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvYXhoc3Vybm9hb2h0bXpkd29uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk0Mzc5MTcsImV4cCI6MjA0NTAxMzkxN30.dLxi8cD1DL-_WudCw4K-D4bvgaOiFLs19I8X82A70d4';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const UpdatePassword = () => {
   const [password, setPassword] = useState('');
@@ -12,10 +17,10 @@ const UpdatePassword = () => {
 
   useEffect(() => {
     const handlePasswordRecovery = async () => {
-      const { data: { session }, error } = await supabase.auth.getSessionFromUrl({ storeSession: true });
+      const { data, error } = await supabase.auth.getSessionFromUrl({ storeSession: true });
       if (error) {
         setError('Invalid or expired token.');
-      } else if (session) {
+      } else if (data.session) {
         setMessage('Session retrieved successfully. You can now update your password.');
       }
       setLoading(false);
