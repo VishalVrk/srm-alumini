@@ -11,12 +11,12 @@ const Header = () => {
           <img 
             src={logo} 
             alt="Easwari Engineering College Logo" 
-            className="w-45 h-42"
+            className="w-25 h-22"
           />
           </Link>
         </div>
         <nav className="flex space-x-6">
-          <Link to="/blog" className="hover:text-gray-300 transition-colors duration-300">Blogschange</Link>
+          <Link to="/blog" className="hover:text-gray-300 transition-colors duration-300">Blogs</Link>
           <Link to="/events" className="hover:text-gray-300 transition-colors duration-300">Events</Link>
           <Link to="/openings" className="hover:text-gray-300 transition-colors duration-300">Jobs</Link>
           <Link to="/ats-tracker" className="hover:text-gray-300 transition-colors duration-300">ATS Tracker</Link>
