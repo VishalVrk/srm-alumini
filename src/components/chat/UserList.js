@@ -46,9 +46,9 @@ function UserList({ setReceiverId, currentUser }) {
   }, [currentUser]);
 
   return (
-    <div className="w-1/4 p-4 bg-gray-800 border-r border-gray-700 overflow-y-auto" style={{ height: 'calc(100vh - 150px)' }}>
-      <h3 className="text-lg font-semibold mb-4">Users</h3>
-      <div className="space-y-2">
+    <div className="w-1/4 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <h3 className="text-lg font-semibold p-4">Users</h3>
+      <div className="flex-grow overflow-y-auto p-4 space-y-2">
         {users.map((user) => (
           <button
             key={user.id}
