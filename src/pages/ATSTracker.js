@@ -21,7 +21,7 @@ function ATSTracker() {
             style={{ border: "none" }}
           ></iframe> */}
           <iframe
-            src="https://ntayal-ats-tracker.hf.space"
+            src="https://huggingface.co/spaces/Vaishvik1618/ATSmatch"
             frameborder="0"
             width="850"
             height="850"
