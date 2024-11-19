@@ -94,10 +94,10 @@ function Chat() {
 
   return (
     <div className="flex flex-col h-screen bg-gray-800 text-white">
-      <div className="flex-grow flex">
+      <div className="flex-grow flex  max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
         <UserList setReceiverId={setReceiverId} currentUser={user} />
         {receiverId ? (
-          <div className="flex flex-col flex-grow max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
+          <div className="flex flex-col flex-grow">
             <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg chat-messages">
               <h3 className="text-lg font-semibold mb-4">Chat</h3>
               <div className="space-y-2">
