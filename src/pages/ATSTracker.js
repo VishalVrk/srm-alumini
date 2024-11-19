@@ -13,12 +13,17 @@ function ATSTracker() {
           Enhance your resume for ATS compatibility. Boost your chances of getting selected by matching your resume with the job description.
         </p>
         {/* Embedding the Hugging Face Space */}
-        <div className="flex justify-center">
+        <div className="flex justify-center overflow-hidden" style={{ height: "700px", width: "800px" }}>
           <iframe
-            src="https://vaishvik1618-atsmatch.hf.space?embed=true&embed_options=hide_header,hide_title"
+            src="https://vaishvik1618-atsmatch.hf.space?embed=true"
             frameBorder="0"
-            width="850"
-            height="850"
+            style={{
+              transform: "scale(1.2)", // Zoom in by 1.2x
+              transformOrigin: "top left", // Anchor zoom to the top-left corner
+              width: "125%", // Ensure the iframe width accommodates the zoom
+              height: "100%",
+              border: "none",
+            }}
           ></iframe>
         </div>
       </div>
