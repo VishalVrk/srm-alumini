@@ -16,7 +16,7 @@ const Header = () => {
           </Link>
         </div>
         <nav className="flex space-x-6">
-          <Link to="/blog" className="hover:text-gray-300 transition-colors duration-300">Blogs</Link>
+          <Link to="/blog" className="hover:text-gray-300 transition-colors duration-300">Blogschange</Link>
           <Link to="/events" className="hover:text-gray-300 transition-colors duration-300">Events</Link>
           <Link to="/openings" className="hover:text-gray-300 transition-colors duration-300">Jobs</Link>
           <Link to="/ats-tracker" className="hover:text-gray-300 transition-colors duration-300">ATS Tracker</Link>
