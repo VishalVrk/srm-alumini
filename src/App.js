@@ -14,6 +14,8 @@ import SingleBlogPage from './pages/SingleBlogPage';
 import SingleEventPage from './pages/SingleEventPage';
 import SingleOpeningsPage from './pages/SingleOpeningsPage';
 import Dashboard from './pages/Dashboard';
+import ForgotPassword from './components/ForgotPassword';
+import UpdatePassword from './components/UpdatePassword';
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
             <Route path="/event/:id" element={<SingleEventPage />} />
             <Route path="/openings/:id" element={<SingleOpeningsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/update-password" component={UpdatePassword} />
           </Routes>
         </div>
         <Footer />
