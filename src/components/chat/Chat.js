@@ -93,8 +93,8 @@ function Chat() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-800 text-white">
-      <div className="flex-grow flex  max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
+    <div className="flex flex-col h-screen bg-gray-800 text-white  max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-200px)]">
+      <div className="flex-grow flex">
         <UserList setReceiverId={setReceiverId} currentUser={user} />
         {receiverId ? (
           <div className="flex flex-col flex-grow">
