@@ -4,14 +4,14 @@ import logo from '../assets/logo.png';
 
 const Header = () => {
   return (
-    <header className="bg-black text-white p-4 shadow-lg">
+    <header className="bg-#8ED7C6 text-white p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <Link to="/">
           <img 
             src={logo} 
             alt="Easwari Engineering College Logo" 
-            className="w-25 h-22"
+            className="w-32 h-30"
           />
           </Link>
         </div>
