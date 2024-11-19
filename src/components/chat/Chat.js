@@ -98,7 +98,7 @@ function Chat() {
         <UserList setReceiverId={setReceiverId} currentUser={user} />
         {receiverId ? (
           <div className="flex flex-col flex-grow">
-            <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg max-h-chat chat-messages">
+            <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg chat-messages">
               <h3 className="text-lg font-semibold mb-4">Chat</h3>
               <div className="space-y-2">
                 {isChatEmpty ? (
