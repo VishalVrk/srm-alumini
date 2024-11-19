@@ -16,16 +16,16 @@ import SingleOpeningsPage from './pages/SingleOpeningsPage';
 import Dashboard from './pages/Dashboard';
 import ForgotPassword from './components/ForgotPassword';
 import UpdatePassword from './components/UpdatePassword';
-import CheckSupabaseMethod from './components/CheckSupabaseMethod'; // Adjust the path as needed
+import CheckSupabaseMethod from './CheckSupabaseMethod'; // Adjust the path as needed
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+      <CheckSupabaseMethod />
       <Header/>
         <div className="flex-grow">
           <Routes>
-            <CheckSupabaseMethod />
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/alumini-maps" element={<AlumniMap />} />
