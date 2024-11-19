@@ -67,7 +67,7 @@ function UserList({ setReceiverId, currentUser }) {
                   height: '8px',
                   backgroundColor: 'red',
                   borderRadius: '50%',
-                  maxHeight: 'calc(100vh - 150px)'
+                  maxHeight: 'calc(100vh - 150px)',
                 }}
               ></span>
             )}
