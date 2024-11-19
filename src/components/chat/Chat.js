@@ -97,7 +97,7 @@ function Chat() {
       <div className="flex-grow flex">
         <UserList setReceiverId={setReceiverId} currentUser={user} />
         {receiverId ? (
-          <div className="flex flex-col flex-grow">
+          <div className="flex flex-col flex-grow" style={{ maxHeight: 'calc(100vh - 150px)' }}>
             <div className="flex-grow p-4 overflow-y-auto bg-gray-900 rounded-lg chat-messages" style={{ maxHeight: 'calc(100vh - 150px)' }}>
               <h3 className="text-lg font-semibold mb-4">Chat</h3>
               <div className="space-y-2">
