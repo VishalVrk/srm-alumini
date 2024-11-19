@@ -16,7 +16,7 @@ import SingleOpeningsPage from './pages/SingleOpeningsPage';
 import Dashboard from './pages/Dashboard';
 import ForgotPassword from './components/ForgotPassword';
 import UpdatePassword from './components/UpdatePassword';
-import CheckSupabaseMethod from './CheckSupabaseMethod'; // Adjust the path as needed
+import CheckSupabaseMethod from './components/CheckSupabaseMethod'; // Adjust the path as needed
 
 function App() {
   return (
