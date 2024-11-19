@@ -22,7 +22,7 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-      <CheckSupabaseMethod />
+      {/* <CheckSupabaseMethod /> */}
       <Header/>
         <div className="flex-grow">
           <Routes>
