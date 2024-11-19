@@ -16,6 +16,7 @@ import SingleOpeningsPage from './pages/SingleOpeningsPage';
 import Dashboard from './pages/Dashboard';
 import ForgotPassword from './components/ForgotPassword';
 import UpdatePassword from './components/UpdatePassword';
+import CheckSupabaseMethod from './CheckSupabaseMethod'; // Adjust the path as needed
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Header/>
         <div className="flex-grow">
           <Routes>
+            <CheckSupabaseMethod />
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/alumini-maps" element={<AlumniMap />} />
