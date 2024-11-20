@@ -53,7 +53,7 @@ const Header = () => {
           />
 =======
             <img
-              src="https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2022/01/srm-logo-white.svg.gzip"
+              src="https://i.pinimg.com/originals/28/59/ff/2859ffb6a79f7a1ed1408f125fa676e8.png"
               alt="Easwari Engineering College Logo"
               className="w-12 h-12"
             />
