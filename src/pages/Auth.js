@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -191,6 +193,10 @@ const Auth = () => {
           className="mb-6 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
         />
         
+        <Link to="/forgot-password" className="text-blue-500 hover:underline mb-4 block text-center">
+          Forgot Password?
+        </Link>
+
         <button
           onClick={isSignUp ? handleSignUp : handleLogin}
           className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out mb-4"
