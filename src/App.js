@@ -16,11 +16,13 @@ import SingleOpeningsPage from './pages/SingleOpeningsPage';
 import Dashboard from './pages/Dashboard';
 import ForgotPassword from './components/ForgotPassword';
 import UpdatePassword from './components/UpdatePassword';
+import CheckSupabaseMethod from './CheckSupabaseMethod'; // Adjust the path as needed
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+      {/* <CheckSupabaseMethod /> */}
       <Header/>
         <div className="flex-grow">
           <Routes>
@@ -36,8 +38,8 @@ function App() {
             <Route path="/event/:id" element={<SingleEventPage />} />
             <Route path="/openings/:id" element={<SingleOpeningsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route path="/update-password" component={UpdatePassword} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/update-password" element={<UpdatePassword />} />
           </Routes>
         </div>
         <Footer />

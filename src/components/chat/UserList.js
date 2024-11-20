@@ -46,29 +46,23 @@ function UserList({ setReceiverId, currentUser }) {
   }, [currentUser]);
 
   return (
-    <div className="w-1/4 p-4 bg-gray-800 border-r border-gray-700">
-      <h3 className="text-lg font-semibold mb-4">Users</h3>
-      <div className="space-y-2">
+    <div className="w-1/4 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <h3 className="text-lg font-semibold p-4">Users</h3>
+      <div className="flex-grow overflow-y-auto p-4 space-y-2">
         {users.map((user) => (
           <button
             key={user.id}
             onClick={() => setReceiverId(user.id)}
-            className="w-full text-left p-2 rounded-lg bg-gray-700 hover:bg-gray-600 relative"
+            className="w-full text-left p-2 rounded-lg bg-gray-700 hover:bg-gray-600 relative flex items-center"
           >
             {user.name}
             {user.unread_count > 0 && (
               <span
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '12px',
-                  transform: 'translateY(-50%)',
-                  width: '8px',
-                  height: '8px',
-                  backgroundColor: 'red',
-                  borderRadius: '50%',
-                }}
-              ></span>
+                className="ml-auto bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full"
+                style={{ marginLeft: 'auto' }}
+              >
+                {user.unread_count}
+              </span>
             )}
           </button>
         ))}

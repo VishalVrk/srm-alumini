@@ -16,7 +16,7 @@ const ForgotPassword = () => {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: 'https://yourapp.com/update-password',
+        redirectTo: 'https://srm-alumini.vercel.app/update-password',
       });
       if (error) throw error;
       setMessage('Password reset email sent successfully.');
