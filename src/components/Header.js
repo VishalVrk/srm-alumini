@@ -46,15 +46,10 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           <Link to="/">
           <img 
-            src={logo} 
+            src="https://i.pinimg.com/originals/28/59/ff/2859ffb6a79f7a1ed1408f125fa676e8.png" 
             alt="Easwari Engineering College Logo" 
             className="w-32 h-30"
           />
-            <img
-              src="https://i.pinimg.com/originals/28/59/ff/2859ffb6a79f7a1ed1408f125fa676e8.png"
-              alt="Easwari Engineering College Logo"
-              className="w-12 h-12"
-            />
           </Link>
         </div>
         <nav className="flex space-x-6">
