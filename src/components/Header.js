@@ -45,19 +45,16 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <Link to="/">
-<<<<<<< HEAD
           <img 
             src={logo} 
             alt="Easwari Engineering College Logo" 
             className="w-32 h-30"
           />
-=======
             <img
               src="https://i.pinimg.com/originals/28/59/ff/2859ffb6a79f7a1ed1408f125fa676e8.png"
               alt="Easwari Engineering College Logo"
               className="w-12 h-12"
             />
->>>>>>> 8bf558abf12f343c96467aaca933542bfba5dff6
           </Link>
         </div>
         <nav className="flex space-x-6">
